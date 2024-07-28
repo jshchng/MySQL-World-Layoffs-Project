@@ -182,7 +182,6 @@ AND t2.industry IS NOT NULL;
 SELECT company, industry
 FROM layoffs_staging2;
 
-
 /*
 Unsuccessful
 Next approach: Change the blank values to NULL and then join the tables from t1 to t2 for industry 
@@ -192,7 +191,7 @@ UPDATE layoffs_staging2
 SET industry = NULL
 WHERE industry = ''; 
 
--- Check blanks changed to NULL 
+-- Check blank values changed to NULL 
 SELECT t1.industry, t2.industry
 FROM layoffs_staging2 t1
 JOIN layoffs_staging2 t2 
@@ -224,7 +223,7 @@ AND percentage_laid_off IS NULL;
 Deleting total_laid_off and percentage_laid_off values that are NULL -> can affect EDA
 */ 
 
--- Delete NULLs 
+-- Delete NULL values
 DELETE 
 FROM layoffs_staging2
 WHERE total_laid_off IS NULL
