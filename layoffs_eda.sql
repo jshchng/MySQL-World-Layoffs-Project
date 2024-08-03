@@ -3,14 +3,14 @@ Exploratory Data Analysis
 
 Explore each column to identify patterns in the data and answer questions regarding:
 
-- When did these layoffs occur?
-- What industry has had the most layoffs?
-- Dates of layoffs (is there a particular pattern for the timing of layoffs?)
-- What industry is least affected by layoffs? 
-- How does this vary by country?
-- Does funding influence if layoffs increase or decrease? 
-
+- Identify the timing of layoffs: When did they occur?
+- Determine the industry with the highest number of layoffs.
+- Investigate if there is a particular pattern or trend in the timing of layoffs.
+- Find out which industry experienced the fewest layoffs.
+- Analyze how layoffs vary by country.
+- Explore whether funding levels influence the frequency of layoffs.
 */ 
+
 -- Retrieve all data for review
 SELECT *
 FROM layoffs_staging2;
@@ -34,6 +34,7 @@ SELECT company, SUM(total_laid_off)
 FROM layoffs_staging2
 GROUP BY company
 ORDER BY 2 DESC;
+
 /*
 Major global companies with significant layoffs:
 Amazon: 18,150
@@ -80,6 +81,7 @@ SELECT YEAR(`date`), SUM(total_laid_off)
 FROM layoffs_staging2 
 GROUP BY YEAR(`date`)
 ORDER BY 2 DESC;  
+
 /*
 2022 recorded the highest number of layoffs, while 2021 had the lowest.
 Note: Data for 2023 covers only three months, but total layoffs are already at 125,677.
